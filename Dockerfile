@@ -13,6 +13,7 @@ RUN conda install -c anaconda ipywidgets
 RUN conda install -c conda-forge panel
 RUN conda install scikit-learn
 RUN conda install -c conda-forge statsmodels
+RUN conda install -c bokeh ipywidgets_bokeh
 RUN pip install clustergrammer2
 RUN pip install clustergrammer_widget
 
