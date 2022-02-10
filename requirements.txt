@@ -1,8 +1,0 @@
-scipy
-pandas==1.3.2
-numpy
-matplotlib
-ipywidgets
-panel
-clustergrammer2
-clustergrammer_widget
