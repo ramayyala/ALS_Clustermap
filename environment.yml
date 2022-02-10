@@ -1,0 +1,10 @@
+name: panel
+channels:
+  - defaults
+  - pyviz
+dependencies:
+  - python=3.8
+  - panel
+  - notebook
+  - jupyter-panel-proxy
+prefix: /home/curryofdoom/anaconda3/envs/panel
