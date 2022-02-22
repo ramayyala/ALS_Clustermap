@@ -1,3 +1,16 @@
+import scipy as scp
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import re
+import csv
+from clustergrammer_widget import *
+net = Network(clustergrammer_widget)
+from clustergrammer2 import net
+import ipywidgets as widgets
+from ipywidgets import interact
+import panel as pn
+pn.extension('ipywidgets')
 material = pn.template.BootstrapTemplate(site_url="https://dataportal.answerals.org/search",logo="../misc/logo.png",title='ANSWER ALS CLUSTERMAP',header_background="#204cac",sidebar_width=410)
 
 #User Input
