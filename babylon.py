@@ -13,7 +13,7 @@ import panel as pn
 from flask import Flask, request
 import requests, json
 pn.extension('ipywidgets')
-material = pn.template.BootstrapTemplate(site_url="https://dataportal.answerals.org/search",logo="../misc/logo.png",title='ANSWER ALS CLUSTERMAP',header_background="#204cac",sidebar_width=410)
+material = pn.template.BootstrapTemplate(site_url="https://dataportal.answerals.org/search",logo="https://raw.githubusercontent.com/ramayyala/ALS_Clustermap/master/misc/logo.png",title='ANSWER ALS CLUSTERMAP',header_background="#204cac",sidebar_width=410)
 
 #User Input
 _user_input = {
