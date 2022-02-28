@@ -10,7 +10,6 @@ from clustergrammer2 import net
 import ipywidgets as widgets
 from ipywidgets import interact
 import panel as pn
-from flask import Flask, request
 import requests, json
 pn.extension('ipywidgets')
 material = pn.template.BootstrapTemplate(site_url="https://dataportal.answerals.org/search",logo="https://raw.githubusercontent.com/ramayyala/ALS_Clustermap/master/misc/logo.png",title='ANSWER ALS CLUSTERMAP',header_background="#204cac",sidebar_width=410)
