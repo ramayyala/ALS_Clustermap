@@ -36,7 +36,7 @@ def _update_input(user_dropdown):
     user_input.value = gene_list[0]
 
 #Participant List
-participant_input = pn.widgets.input.TextAreaInput(value='',name='Participant List',width=300, height=300)
+participant_input = pn.widgets.input.TextAreaInput(value='',name='Participant List',width=300, height=300,max_length=100000)
 try:
     url=requests.get(str(pn.state.session_args.get('endpoint')[0].decode('utf-8'))+'?'+'searchId='+str(pn.state.session_args.get('searchId')[0].decode('utf-8'))+'&'+'releaseName='+str(pn.state.session_args.get('releaseName')[0].decode('utf-8')))
     participants=list(url.json())
