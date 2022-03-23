@@ -44,6 +44,8 @@ stages:
         python -m pip install --upgrade pip
         pip install setup
         pip install -r requirements.txt
+        wget https://media.githubusercontent.com/media/ramayyala/ALS_Clustermap/master/data/covariates.csv
+        wget https://media.githubusercontent.com/media/ramayyala/ALS_Clustermap/master/data/data.csv
       workingDirectory: $(projectRoot)
       displayName: "Install requirements"
 

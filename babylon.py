@@ -54,8 +54,11 @@ positive_col = pn.widgets.ColorPicker(name='Positive Value Color', value='#ff190
 negative_col = pn.widgets.ColorPicker(name='Negative Value Color', value='#0055ff')
 
 #Load Covariates and Data
-covariates=pd.read_csv("https://media.githubusercontent.com/media/ramayyala/ALS_Clustermap/master/data/covariates.csv")
-df=pd.read_csv("https://media.githubusercontent.com/media/ramayyala/ALS_Clustermap/master/data/data.csv")
+covariates=pd.read_csv("covariates.csv")
+df=pd.read_csv("data.csv")
+
+#covariates=pd.read_csv("https://media.githubusercontent.com/media/ramayyala/ALS_Clustermap/master/data/covariates.csv")
+#df=pd.read_csv("https://media.githubusercontent.com/media/ramayyala/ALS_Clustermap/master/data/data.csv")
 
 
 @pn.depends(user_input,covariate_selection.param.value,positive_col,negative_col,participant_input)
@@ -85,6 +88,6 @@ material.sidebar.append(positive_col)
 material.sidebar.append(negative_col)
 
 material.main.append(
-    pn.Row(get_plot)
+    pn.Row(get_plot,height=1000)
     )
 material.servable();
