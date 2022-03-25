@@ -63,8 +63,8 @@ negative_col = pn.widgets.ColorPicker(name='Negative Value Color', value='#0055f
 #pn.state.onload(load_data)
 #covariates=pd.read_csv("data/covariates.csv.gz")
 #df=pd.read_csv("https://media.githubusercontent.com/media/ramayyala/ALS_Clustermap/master/data/data.csv")
-df=pd.read_csv("https://media.githubusercontent.com/media/ramayyala/ALS_Clustermap/master/data/data.csv")
 covariates=pd.read_csv("https://media.githubusercontent.com/media/ramayyala/ALS_Clustermap/master/data/covariates.csv")
+df=pd.read_csv("https://media.githubusercontent.com/media/ramayyala/ALS_Clustermap/master/data/data.csv")
 @pn.depends(user_input,covariate_selection.param.value,positive_col,negative_col,participant_input)
 def get_plot(gene_set,covariate,positive,negative,participant): # start function
     gene_list=list(user_input.value.split())
