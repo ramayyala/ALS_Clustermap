@@ -9,3 +9,4 @@ clustergrammer_widget
 scikit-learn
 statsmodels
 ipywidgets_bokeh
+jinja2
