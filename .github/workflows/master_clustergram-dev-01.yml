@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'clustergram-dev-01'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F2B2E025DB254C10BD55B7D1183CADB6 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_36E0F1DAAA28472BAE76DACAC2B293BA }}
