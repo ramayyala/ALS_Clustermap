@@ -11,6 +11,7 @@ import ipywidgets as widgets
 from ipywidgets import interact
 import panel as pn
 import requests, json
+import time
 pn.extension('ipywidgets')
 material = pn.template.BootstrapTemplate(site_url="https://dataportal.answerals.org/search",logo="https://raw.githubusercontent.com/ramayyala/ALS_Clustermap/master/misc/logo.png",title='ANSWER ALS CLUSTERMAP',header_background="#204cac",sidebar_width=410)
 
@@ -54,8 +55,15 @@ positive_col = pn.widgets.ColorPicker(name='Positive Value Color', value='#ff190
 negative_col = pn.widgets.ColorPicker(name='Negative Value Color', value='#0055ff')
 
 #Load Covariates and Data
-covariates=pd.read_csv("https://media.githubusercontent.com/media/ramayyala/ALS_Clustermap/master/data/covariates.csv")
-df=pd.read_csv("https://media.githubusercontent.com/media/ramayyala/ALS_Clustermap/master/data/data.csv")
+df=pd.read_csv("data/data.csv.gz")
+def load_data():
+    if 'data' not in pn.state.cache:
+        pn.state.cache['data'] = df = pd.read_csv("data/data.csv.gz")
+    else:
+        df = pn.state.cache['data']
+pn.state.onload(load_data)
+covariates=pd.read_csv("data/covariates.csv.gz")
+#df=pd.read_csv("https://media.githubusercontent.com/media/ramayyala/ALS_Clustermap/master/data/data.csv")
 
 
 @pn.depends(user_input,covariate_selection.param.value,positive_col,negative_col,participant_input)
