@@ -54,17 +54,17 @@ positive_col = pn.widgets.ColorPicker(name='Positive Value Color', value='#ff190
 negative_col = pn.widgets.ColorPicker(name='Negative Value Color', value='#0055ff')
 
 #Load Covariates and Data
-#df=pd.read_csv("data/data.csv.gz")
-#def load_data():
-#    if 'data' not in pn.state.cache:
-#        pn.state.cache['data'] = df = pd.read_csv("data/data.csv.gz")
-#    else:
-#        df = pn.state.cache['data']
-#pn.state.onload(load_data)
-#covariates=pd.read_csv("data/covariates.csv.gz")
+df=pd.read_csv("data/data.csv.gz")
+def load_data():
+    if 'data' not in pn.state.cache:
+        pn.state.cache['data'] = df = pd.read_csv("data/data.csv.gz")
+    else:
+        df = pn.state.cache['data']
+pn.state.onload(load_data)
+covariates=pd.read_csv("data/covariates.csv.gz")
+
+#covariates=pd.read_csv("https://media.githubusercontent.com/media/ramayyala/ALS_Clustermap/master/data/covariates.csv")
 #df=pd.read_csv("https://media.githubusercontent.com/media/ramayyala/ALS_Clustermap/master/data/data.csv")
-covariates=pd.read_csv("https://media.githubusercontent.com/media/ramayyala/ALS_Clustermap/master/data/covariates.csv")
-df=pd.read_csv("https://media.githubusercontent.com/media/ramayyala/ALS_Clustermap/master/data/data.csv")
 @pn.depends(user_input,covariate_selection.param.value,positive_col,negative_col,participant_input)
 def get_plot(gene_set,covariate,positive,negative,participant): # start function
     gene_list=list(user_input.value.split())
