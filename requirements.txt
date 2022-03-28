@@ -4,6 +4,7 @@ numpy
 matplotlib
 ipywidgets
 panel
+jinja2==3.0.3
 clustergrammer2
 clustergrammer_widget
 scikit-learn
