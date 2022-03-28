@@ -3,7 +3,7 @@ pandas
 numpy
 matplotlib
 ipywidgets
-panel
+panel=0.12.6
 clustergrammer2
 clustergrammer_widget
 scikit-learn
