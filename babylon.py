@@ -55,12 +55,6 @@ negative_col = pn.widgets.ColorPicker(name='Negative Value Color', value='#0055f
 
 #Load Covariates and Data
 df=pd.read_csv("data/data.csv.gz")
-def load_data():
-    if 'data' not in pn.state.cache:
-        pn.state.cache['data'] = df
-    else:
-        pn.state.cache['data'] = pd.read_csv("data/data.csv.gz")
-pn.state.onload(load_data)
 covariates=pd.read_csv("data/covariates.csv.gz")
 
 #covariates=pd.read_csv("https://media.githubusercontent.com/media/ramayyala/ALS_Clustermap/master/data/covariates.csv")
