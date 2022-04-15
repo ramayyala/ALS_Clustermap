@@ -50,16 +50,16 @@ covariate_selection = pn.widgets.RadioButtonGroup(
     name='Covariates', options=['Sex', 'Ethnicity', 'Race','Subject Group','Case_Control'], button_type='success')
 
 # Color Pickers
-positive_col = pn.widgets.ColorPicker(name='Positive Value Color', value='#ff1900')
+positive_col = pn.widgets.ColorPicker(name='Positive Value Color', value='#1e7333')
 negative_col = pn.widgets.ColorPicker(name='Negative Value Color', value='#0055ff')
 
 #Load Covariates and Data
 df=pd.read_csv("data/data.csv.gz")
 def load_data():
     if 'data' not in pn.state.cache:
-        pn.state.cache['data'] = df = pd.read_csv("data/data.csv.gz")
+        pn.state.cache['data'] = df
     else:
-        df = pn.state.cache['data']
+        pn.state.cache['data'] = pd.read_csv("data/data.csv.gz")
 pn.state.onload(load_data)
 covariates=pd.read_csv("data/covariates.csv.gz")
 
