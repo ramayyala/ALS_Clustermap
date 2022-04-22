@@ -11,6 +11,7 @@ import ipywidgets as widgets
 from ipywidgets import interact
 import panel as pn
 import requests, json
+import datatable as dt
 pn.extension('ipywidgets')
 material = pn.template.BootstrapTemplate(site_url="https://dataportal.answerals.org/search",logo="https://raw.githubusercontent.com/ramayyala/ALS_Clustermap/master/misc/logo.png",title='ANSWER ALS CLUSTERMAP',header_background="#204cac",sidebar_width=410)
 
@@ -54,7 +55,9 @@ positive_col = pn.widgets.ColorPicker(name='Positive Value Color', value='#1e733
 negative_col = pn.widgets.ColorPicker(name='Negative Value Color', value='#0055ff')
 
 #Load Covariates and Data
-df=pd.read_csv("data/data.csv.gz")
+dt_df = dt.fread('data/data.csv.gz')
+df = dt_df.to_pandas()
+#df=pd.read_csv("data/data.csv.gz")
 covariates=pd.read_csv("data/covariates.csv.gz")
 
 #covariates=pd.read_csv("https://media.githubusercontent.com/media/ramayyala/ALS_Clustermap/master/data/covariates.csv")
