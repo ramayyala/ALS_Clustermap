@@ -20,7 +20,7 @@ class LoginHandler(RequestHandler):
         self.render("login.html", errormessage=errormessage)
 
     def check_permission(self, username, password):
-        if username == "bokeh" and password == "bokeh":
+        if username == "answerals" and password == "clustergram_2":
             return True
         return False
 
@@ -37,7 +37,11 @@ class LoginHandler(RequestHandler):
 
     def set_current_user(self, user):
         if user:
-            self.set_cookie("user", tornado.escape.json_encode(user))
+            self.set_cookie(
+                "user", 
+                tornado.escape.json_encode(user),
+                expires_days=0.001
+            )
         else:
             self.clear_cookie("user")
 

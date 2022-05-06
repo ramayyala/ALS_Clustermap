@@ -12,6 +12,8 @@ from ipywidgets import interact
 import panel as pn
 import requests, json
 import datatable as dt
+from bokeh.models import Button, ColumnDataSource, CustomJS, Slider, TextInput
+from bokeh.io import curdoc
 pn.extension('ipywidgets')
 material = pn.template.BootstrapTemplate(site_url="https://dataportal.answerals.org/search",logo="https://raw.githubusercontent.com/ramayyala/ALS_Clustermap/master/misc/logo.png",title='ANSWER ALS CLUSTERMAP',header_background="#204cac",sidebar_width=410)
 
@@ -54,6 +56,11 @@ covariate_selection = pn.widgets.RadioButtonGroup(
 positive_col = pn.widgets.ColorPicker(name='Positive Value Color', value='#1e7333')
 negative_col = pn.widgets.ColorPicker(name='Negative Value Color', value='#0055ff')
 
+#Logout Button
+logout = Button(label="logout")
+logout.js_on_event("button_click", CustomJS(code="window.location.href='%s'" % curdoc().session_context.logout_url))
+
+
 #Load Covariates and Data
 dt_df = dt.fread('data/data.csv.gz')
 df = dt_df.to_pandas()
@@ -87,6 +94,7 @@ material.sidebar.append(participant_input)
 material.sidebar.append(covariate_selection)
 material.sidebar.append(positive_col)
 material.sidebar.append(negative_col)
+material.sidebar.append(logout)
 
 material.main.append(
     pn.Row(get_plot,height=1000)
