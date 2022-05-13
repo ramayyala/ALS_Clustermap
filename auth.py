@@ -20,7 +20,7 @@ class LoginHandler(RequestHandler):
         self.render("login.html", errormessage=errormessage)
 
     def check_permission(self, username, password):
-        if username == "answerals" and password == "clustergram_2":
+        if username == "answerals" and password == "Blooming0nions":
             return True
         return False
 
