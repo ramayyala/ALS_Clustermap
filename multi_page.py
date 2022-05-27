@@ -18,7 +18,7 @@ from bokeh.io import curdoc
 import plotly.express as px
 pn.extension('ipywidgets')
 pn.extension('plotly')
-material = pn.template.BootstrapTemplate(site_url="https://dataportal.answerals.org/search",logo="https://raw.githubusercontent.com/ramayyala/ALS_Clustermap/master/misc/logo.png",title='ANSWER ALS CLUSTERMAP',header_background="#204cac",sidebar_width=410)
+material = pn.template.BootstrapTemplate(site_url="https://dataportal.answerals.org/search",logo="https://raw.githubusercontent.com/ramayyala/ALS_Clustermap/master/misc/logo.png",title='ANSWER ALS VISUALIZATION TOOL',header_background="#204cac",sidebar_width=450)
 
 #Load Covariates and Data
 dt_df = dt.fread('data/data.csv.gz')
