@@ -45,6 +45,7 @@ stages:
         pip install setup
         pip install -r requirements.txt
         pip install jinja2==3.0.3
+        pip install plotly
       workingDirectory: $(projectRoot)
       displayName: "Install requirements"
 
