@@ -25,12 +25,16 @@ dt_df = dt.fread('data/data.csv.gz')
 df = dt_df.to_pandas()
 #df=pd.read_csv("data/data.csv.gz")
 covariates=pd.read_csv("data/covariates.csv.gz").set_index('Participant_ID')
+#Load Differential Expression Data
+dt_df = dt.fread('data/data_de.csv.gz')
+df_de = dt_df.to_pandas()
 
 # Graph Choice
 print()
 
 link1 = pn.widgets.Button(name='Clustermap')
 link2 = pn.widgets.Button(name='Boxplot')
+link3 = pn.widgets.Button(name='Volcano Plot')
 #graph_dropdown = pn.widgets.Select(value='Clustermap',name='Select Graph', options=['Clustermap','Boxplot'])
 
 
@@ -116,6 +120,11 @@ def boxplot(gene_set,covariate,positive,negative,participant): # start function
     else:
         fig = px.box(df_selected, x="Gene_ID",y="TPM",color=covariate_selector.value, width=1000, height=1000)
     return fig
+@pn.depends(user_input)
+def volcano_plot(gene_set): # start function
+    df_selected=df_de[df_de['gene_id'].isin(list(gene_set.split()))]
+    fig = px.scatter(df_selected, x='log2FoldChange', y='negative_log_pval', color='group',hover_data=['gene_id'],width=1000, height=1000)
+    return fig
 
 
 main_content1 = [
@@ -123,6 +132,9 @@ main_content1 = [
 ]
 main_content2 = [
     pn.Row(boxplot, height=1000)
+]
+main_content3 = [
+    pn.Row(volcano_plot, height=1000)
 ]
 
 sidebar_content1 = [
@@ -132,6 +144,10 @@ sidebar_content1 = [
 sidebar_content2 = [
     pn.Column(pn.pane.Markdown("**Settings**"),user_dropdown,user_input,participant_input,covariate_selector,logout)
 ]
+
+sidebar_content3 = [
+    pn.Column(pn.pane.Markdown("**Settings**"),user_dropdown,user_input,logout)
+]
 side_bar = pn.Column(sizing_mode='stretch_width')
 material.sidebar.append(side_bar)
 
@@ -139,6 +155,7 @@ material.sidebar.append(side_bar)
 material.sidebar.append(pn.pane.Markdown("**Graph Choice**"))
 material.sidebar.append(link1)
 material.sidebar.append(link2)
+material.sidebar.append(link3)
 
 #material.sidebar.append(pn.pane.Markdown("**Settings**"))
 #material.sidebar.append(user_dropdown)
@@ -166,7 +183,13 @@ def load_content2(event):
     material.sidebar[0].objects= sidebar_content2
     #covariate_selector = pn.widgets.RadioButtonGroup(name='Covariates', options=['Sex', 'Ethnicity', 'Race','Subject Group','Case_Control'], button_type='success')
 
+def load_content3(event):
+    material.main[0].objects = main_content3
+    material.sidebar[0].objects= sidebar_content3
+    #covariate_selector = pn.widgets.RadioButtonGroup(name='Covariates', options=['Sex', 'Ethnicity', 'Race','Subject Group','Case_Control'], button_type='success')
+
 
 link1.on_click(load_content1)
 link2.on_click(load_content2)
+link3.on_click(load_content3)
 material.servable();
